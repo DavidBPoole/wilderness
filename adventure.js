@@ -447,6 +447,35 @@ const longTrail = (allTrails) => {
     return longest
 }
 
+// New river functions
+const totalRiverMiles = (rivers) => {
+    let total = 0;
+    for (const river of rivers) {
+        total += river.length;
+    }
+    return total;
+}
+
+const shortestRiver = (riverArray) => {
+    let shortest = riverArray[0].length;
+    for (const river of riverArray) {
+        if (river.length < shortest) {
+            shortest = river.length;
+        }
+    }
+    return shortest;
+}
+
+const longestRiver = (riverArray) => {
+    let longest = 0;
+    for (const river of riverArray) {
+        if (river.length > longest) {
+            longest = river.length;
+        }
+    }
+    return longest;
+}
+
 
 console.log(`
     B J Ö R N ' S   W I L D N E R N E S S   A D V E N T U R E S
@@ -471,8 +500,25 @@ console.log('***************************************************')
 const trailTotal = totalTrailMiles(trails)
 console.log(`We service ${trailTotal} miles of wilderness trails across the US`)
 
-const shortTrail = shortestTrail(trails)
+//Correction #1 to remove bug in running initial code
+// const shortTrail = shortestTrail(trails)
+// console.log(`The shortest trail is ${shortTrail} kilometers`)
+
+const shortTrail = shortyTrail(trails)
 console.log(`The shortest trail is ${shortTrail} kilometers`)
 
 const longest = longTrail(trails)
 console.log(`The longest trail is ${longest} kilometers`)
+
+// Display river information
+console.log('***************************************************');
+console.log('*****              R I V E R S                *****');
+console.log('***************************************************');
+const riverTotal = totalRiverMiles(rivers);
+console.log(`We offer expert guidance on ${riverTotal} kilometers of scenic rivers across the US`);
+
+const shortRiver = shortestRiver(rivers);
+console.log(`The shortest river tour is ${shortRiver} kilometers`);
+
+const longRiver = longestRiver(rivers);
+console.log(`The longest river tour is ${longRiver} kilometers`);
