@@ -105,7 +105,8 @@ const trails = [{
 }, {
     id: 14,
     price: "$",
-    latitede: 59.0883359,
+    // latitede: 59.0883359, corrected typo in script
+    latitude: 59.0883359,
     longitude: 17.5704656,
     plantHighlight: "Point Reyes Ceanothus",
     trailName: "Sunshine Straights",
@@ -522,3 +523,26 @@ console.log(`The shortest river tour is ${shortRiver} kilometers`);
 
 const longRiver = longestRiver(rivers);
 console.log(`The longest river tour is ${longRiver} kilometers`);
+
+// Function to get least expensive trails
+const leastExpensiveTrails = (trails) => {
+    return trails.filter(trail => trail.price === "$");
+};
+
+// Function to get most expensive trails
+const mostExpensiveTrails = (trails) => {
+    return trails.filter(trail => trail.price.length >= 4);
+};
+
+// Display least and most expensive trails
+console.log('***************************************************');
+console.log('*****          L E A S T  &  M O S T          *****');
+console.log('***************************************************');
+
+const cheapTrails = leastExpensiveTrails(trails);
+console.log("The least expensive trails are:");
+cheapTrails.forEach(trail => console.log(`\t${trail.trailName}`));
+
+const premiumTrails = mostExpensiveTrails(trails);
+console.log("The most expensive trails are:");
+premiumTrails.forEach(trail => console.log(`\t${trail.trailName}`));
