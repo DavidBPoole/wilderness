@@ -448,6 +448,13 @@ const longTrail = (allTrails) => {
     return longest
 }
 
+// Function to list trails based on cost
+const trailsByCost = (trails, costSymbol) => {
+    return trails
+        .filter(trail => trail.price === costSymbol)
+        .map(trail => trail.trailName);
+};
+
 // New river functions
 const totalRiverMiles = (rivers) => {
     let total = 0;
@@ -476,6 +483,16 @@ const longestRiver = (riverArray) => {
     }
     return longest;
 }
+
+// // Function to get river details
+// const riverDetails = (rivers) => {
+//     console.log("\nRIVER DETAILS:");
+//     console.log("---------------------------------");
+//     rivers.forEach(river => {
+//         console.log(`${river.river} starts at [${river.latitude}, ${river.longitude}] and is ${river.length} kilometers long.`);
+//         console.log(`The unique fish for the trip is ${river.uniqueFish}.\n`);
+//     });
+// };
 
 
 console.log(`
@@ -511,6 +528,24 @@ console.log(`The shortest trail is ${shortTrail} kilometers`)
 const longest = longTrail(trails)
 console.log(`The longest trail is ${longest} kilometers`)
 
+// Function to get trail details
+const trailDetails = (trails) => {
+    console.log("\nTRAIL DETAILS:");
+    console.log("---------------------------------");
+    trails.forEach(trail => {
+        console.log(`${trail.trailName} starts at [${trail.latitude}, ${trail.longitude}] and is ${trail.length} kilometers long.`);
+        console.log(`The highlighted plant for the trip is ${trail.plantHighlight}.\n`);
+    });
+};
+
+console.log("\nThe least expensive trails are:");
+console.log(trailsByCost(trails, "$").join("\n"));
+
+console.log("\nThe most expensive trails are:");
+console.log(trailsByCost(trails, "$$$$$").join("\n"));
+
+trailDetails(trails);
+
 // Display river information
 console.log('***************************************************');
 console.log('*****              R I V E R S                *****');
@@ -524,25 +559,37 @@ console.log(`The shortest river tour is ${shortRiver} kilometers`);
 const longRiver = longestRiver(rivers);
 console.log(`The longest river tour is ${longRiver} kilometers`);
 
-// Function to get least expensive trails
-const leastExpensiveTrails = (trails) => {
-    return trails.filter(trail => trail.price === "$");
+// Function to get river details
+const riverDetails = (rivers) => {
+    console.log("\nRIVER DETAILS:");
+    console.log("---------------------------------");
+    rivers.forEach(river => {
+        console.log(`${river.river} starts at [${river.latitude}, ${river.longitude}] and is ${river.length} kilometers long.`);
+        console.log(`The unique fish for the trip is ${river.uniqueFish}.\n`);
+    });
 };
 
-// Function to get most expensive trails
-const mostExpensiveTrails = (trails) => {
-    return trails.filter(trail => trail.price.length >= 4);
-};
+riverDetails(rivers);
+
+// // Function to get least expensive trails
+// const leastExpensiveTrails = (trails) => {
+//     return trails.filter(trail => trail.price === "$");
+// };
+
+// // Function to get most expensive trails
+// const mostExpensiveTrails = (trails) => {
+//     return trails.filter(trail => trail.price.length >= 4);
+// };
 
 // Display least and most expensive trails
-console.log('***************************************************');
-console.log('*****          L E A S T  &  M O S T          *****');
-console.log('***************************************************');
+// console.log('***************************************************');
+// console.log('*****          L E A S T  &  M O S T          *****');
+// console.log('***************************************************');
 
-const cheapTrails = leastExpensiveTrails(trails);
-console.log("The least expensive trails are:");
-cheapTrails.forEach(trail => console.log(`\t${trail.trailName}`));
+// const cheapTrails = leastExpensiveTrails(trails);
+// console.log("The least expensive trails are:");
+// cheapTrails.forEach(trail => console.log(`\t${trail.trailName}`));
 
-const premiumTrails = mostExpensiveTrails(trails);
-console.log("The most expensive trails are:");
-premiumTrails.forEach(trail => console.log(`\t${trail.trailName}`));
+// const premiumTrails = mostExpensiveTrails(trails);
+// console.log("The most expensive trails are:");
+// premiumTrails.forEach(trail => console.log(`\t${trail.trailName}`));
